@@ -1,0 +1,68 @@
+<h2>会員登録</h2>
+
+<% if resource.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(resource.errors.count, "件のエラー") %>が発生しました:</h2>
+    <ul>
+      <% resource.errors.full_messages.uniq.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.label :nickname, "ニックネーム" %><br />
+    <%= f.text_field :nickname, value: f.object.nickname %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email, "メールアドレス" %><br />
+    <%= f.email_field :email, autocomplete: "email", value: f.object.email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password, "パスワード" %>
+    <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %>文字以上)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, "パスワード（確認）" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name, "お名前（姓）" %><br />
+    <%= f.text_field :last_name, value: f.object.last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name, "お名前（名）" %><br />
+    <%= f.text_field :first_name, value: f.object.first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name_kana, "お名前カナ（姓）" %><br />
+    <%= f.text_field :last_name_kana, value: f.object.last_name_kana %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name_kana, "お名前カナ（名）" %><br />
+    <%= f.text_field :first_name_kana, value: f.object.first_name_kana %>
+  </div>
+
+  <div class="field">
+    <%= f.label :birth_date, "生年月日" %><br />
+    <%= f.date_select :birth_date, start_year: 1900, end_year: Date.today.year, default: Date.new(2000, 1, 1) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "会員登録" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

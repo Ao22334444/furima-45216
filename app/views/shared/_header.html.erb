@@ -1,4 +1,21 @@
 <!-- app/views/shared/_header.html.erb -->
-<header>
-  <!-- ヘッダーの中身はここに書きます -->
+<header class="header">
+  <div class="inner">
+    <div class="logo">
+      <%= link_to "FURIMA", root_path, class: "logo-link" %>
+    </div>
+    <nav class="nav">
+      <% if user_signed_in? %>
+        <ul class="nav-list">
+          <li class="nav-item"><%= current_user.nickname %></li>
+          <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
+        </ul>
+      <% else %>
+        <ul class="nav-list">
+          <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: "nav-link" %></li>
+        </ul>
+      <% end %>
+    </nav>
+  </div>
 </header>
