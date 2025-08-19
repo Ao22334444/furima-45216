@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # トップページのルートを設定
   root "items#index"
+
+  resources :items, only: [:index, :new, :create]
 end
