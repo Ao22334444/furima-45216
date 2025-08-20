@@ -17,7 +17,7 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("Image can't be blank")
     end
-    
+
     it 'titleが空では出品できない' do
       @item.title = ''
       @item.valid?
@@ -54,10 +54,35 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include("Price is not a number")
     end
 
+    # ActiveHash: 未選択（id:1）を弾く
     it 'category_idが1では出品できない' do
       @item.category_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Category can't be blank")
+    end
+
+    it 'condition_idが1では出品できない' do
+      @item.condition_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Condition can't be blank")
+    end
+
+    it 'delivery_fee_idが1では出品できない' do
+      @item.delivery_fee_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Delivery fee can't be blank")
+    end
+
+    it 'prefecture_idが1では出品できない' do
+      @item.prefecture_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Prefecture can't be blank")
+    end
+
+    it 'scheduled_delivery_idが1では出品できない' do
+      @item.scheduled_delivery_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Scheduled delivery can't be blank")
     end
 
     it 'userが紐づいていなければ出品できない' do
