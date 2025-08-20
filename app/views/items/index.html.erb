@@ -132,11 +132,7 @@
           <li class='list'>
             <%= link_to "#" do %>
               <div class='item-img-content'>
-                <% if item.image.attached? %>
-                  <%= image_tag item.image, class: "item-img" %>
-                <% else %>
-                  <%= image_tag "item-sample.png", class: "item-img" %> <%# 念のためダミー %>
-                <% end %>
+                <%= image_tag item.image, class: "item-img" %>
 
                 <%# 購入機能実装後に有効化する %>
                 <%# if item.order.present? %>
