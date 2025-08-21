@@ -1,8 +1,12 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
+  before_action :set_item, only: [:show]
 
   def index
     @items = Item.includes(image_attachment: :blob).order(created_at: :desc)
+  end
+
+  def show
   end
 
   def new
@@ -20,6 +24,10 @@ class ItemsController < ApplicationController
   end
 
   private
+
+  def set_item
+    @item = Item.includes(image_attachment: :blob).find(params[:id])
+  end
 
   def item_params
     params.require(:item).permit(
