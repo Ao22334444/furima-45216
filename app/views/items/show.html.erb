@@ -31,7 +31,7 @@
         <%# 出品者本人（販売中）→ 編集・削除のみ表示（遷移先は後で実装） %>
         <%= link_to "商品の編集", edit_item_path(@item), class: "item-red-btn" %>
         <p class="or-text">or</p>
-        <%= link_to "削除", "#", data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class:"item-destroy" %>
+        <%= link_to "削除", item_path(@item), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class:"item-destroy" %>
       <% else %>
         <%# 出品者以外（販売中）→ 購入ボタンのみ表示（遷移先は購入機能後に設定） %>
         <%= link_to "購入画面に進む", "#", class:"item-red-btn" %>
