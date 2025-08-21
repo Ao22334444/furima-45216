@@ -132,7 +132,7 @@
 
 <%# 下部ボタン %>
 <div class="sell-btn-contents">
-  <%= f.submit "出品する", class:"sell-btn" %>
-  <%= link_to 'もどる', root_path, class:"back-btn" %>
+  <%= f.submit (@item.persisted? ? "変更する" : "出品する"), class: "sell-btn" %>
+  <%= link_to 'もどる', (@item.persisted? ? item_path(@item) : root_path), class: "back-btn" %>
 </div>
 <%# /下部ボタン %>
